@@ -118,7 +118,15 @@
     .textarea-field:focus { border-color: var(--text-sub); }
     .save-btn { margin-top: 0.6rem; padding: 0.4rem 1rem; background: transparent; border: 1px solid var(--border-hi); color: var(--text-sub); border-radius: 5px; font-size: 0.75rem; font-family: var(--font-h); font-weight: 500; cursor: pointer; transition: all 0.18s; }
     .save-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
+    .goals-wrap { margin-bottom: 3.5rem; background: rgba(14, 14, 26, 0.5); border: 1px solid var(--border); border-radius: 14px; padding: 2.2rem 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .goals-title { font-family: var(--font-h); font-size: 1.15rem; font-weight: 600; color: var(--text); margin-bottom: 1.8rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 0.8rem; }
+    .goals-title::before { content: ''; width: 4px; height: 18px; background: var(--accent); border-radius: 4px; }
+    .goals-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+    .goal-item { display: flex; gap: 1.2rem; align-items: flex-start; }
+    .goal-num { font-family: var(--font-h); font-size: 2.2rem; font-weight: 700; color: rgba(129,161,193,0.25); line-height: 0.8; }
+    .goal-text { font-size: 0.9rem; color: var(--text-sub); line-height: 1.65; }
+    .goal-text b { color: var(--text); font-weight: 600; }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .skill-item { background: rgba(14, 14, 26, 0.4); border: 1px solid var(--border); padding: 1.5rem; border-radius: 12px; transition: all 0.3s; }
     .skill-item:hover { border-color: var(--accent); transform: translateY(-3px); background: var(--bg3); box-shadow: 0 10px 30px rgba(129,161,193,0.1); }
     .skill-item-title { font-family: var(--font-h); font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 0.6rem; letter-spacing: -0.01em; }
@@ -397,6 +405,24 @@
         <p style="color: var(--text); font-size: 0.9rem; font-weight: 300; line-height: 1.65;">Thách thức lớn nhất là làm sao tránh tình trạng AI "bịa" thông tin (hallucination). Qua thực hành, tôi nhận ra việc cung cấp bối cảnh (context) theo công thức C.R.E.A.T.E và kiểm chứng chéo nguồn dữ liệu là chìa khóa để có kết quả chính xác.</p>
       </div>
     </div>
+    <div class="goals-wrap fade-in">
+      <div class="goals-title">Mục tiêu đạt được</div>
+      <div class="goals-list">
+        <div class="goal-item">
+          <div class="goal-num">01</div>
+          <div class="goal-text">Đã thành thạo hệ thống hóa dữ liệu cá nhân qua cấu trúc thư mục chuẩn và trực tiếp điều phối dự án nhóm bằng <b>Trello, Google Docs, Discord</b>, giúp tăng đáng kể hiệu suất làm việc.</div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-num">02</div>
+          <div class="goal-text">Ứng dụng xuất sắc <b>AI tạo sinh (ChatGPT, Canva)</b> vào thực tiễn: từ thiết kế Infographic đến tối ưu Prompt (C.R.E.A.T.E), luôn đảm bảo tuyệt đối nguyên tắc liêm chính học thuật.</div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-num">03</div>
+          <div class="goal-text">Nắm vững kỹ năng truy xuất, sàng lọc và thẩm định khắt khe thông tin từ các cơ sở dữ liệu học thuật uy tín <b>(IEEE, Springer, ACM)</b> bằng các toán tử tìm kiếm nâng cao.</div>
+        </div>
+      </div>
+    </div>
+    <h3 style="font-family: var(--font-h); font-size: 1.25rem; font-weight: 600; color: var(--text); margin-bottom: 1rem; margin-top: 1rem;" class="fade-in">Kỹ năng cốt lõi</h3>
     <div class="skills-grid fade-in">
       <div class="skill-item">
         <div class="skill-item-title">Prompt Engineering</div>

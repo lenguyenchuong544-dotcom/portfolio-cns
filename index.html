@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Le Nguyen Chuong</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #080810;
+      --bg-gradient: linear-gradient(180deg, #100b1e 0%, #080810 100%);
+      --bg2:       rgba(14, 14, 26, 0.7);
+      --bg3:        #141422;
+      --border:     rgba(255,255,255,0.07);
+      --border-hi:  rgba(255,255,255,0.13);
+      --text:       #e8e8f0;
+      --text-sub:   #7a7a96;
+      --text-dim:   #3a3a52;
+      --accent:     #81a1c1;
+      --accent-lo:  rgba(129,161,193,0.10);
+      --accent2:    #6ee7b7;
+      --font-h:     'Inter', sans-serif;
+      --font-b:     'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: var(--font-b);
+      font-size: 15px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+    section, nav, footer { position: relative; z-index: 1; }
+    section { border-top: 1px solid var(--border); }
+    #hero { border-top: none; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 62px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem;
+      background: rgba(16, 11, 30, 0.82);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--font-h); font-size: 1rem; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: 0.01em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.78rem; font-weight: 400; color: var(--text-sub); text-decoration: none; letter-spacing: 0.07em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 2rem; }
+    .section-wrap { padding: 6rem 0; }
+    .eyebrow { font-family: var(--font-h); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.75rem; }
+    .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+    .section-title { font-family: var(--font-h); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 700; color: var(--text); line-height: 1.18; margin-bottom: 2.5rem; }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: 62px; text-align: center; }
+    .hero-inner { max-width: 780px; padding: 5rem 0; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-lo); border: 1px solid rgba(167,139,250,0.22); color: var(--accent); border-radius: 100px; padding: 0.3rem 1rem; font-size: 0.75rem; font-family: var(--font-h); font-weight: 500; letter-spacing: 0.06em; margin-bottom: 2rem; }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .hero-title { font-family: var(--font-h); font-size: clamp(3rem, 6vw, 5.2rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.025em; color: var(--text); margin-bottom: 1.5rem; }
+    .hero-title em { font-style: normal; color: var(--accent); }
+    .hero-sub { font-size: 1rem; color: var(--text-sub); font-weight: 300; max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.8; }
+    .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem; }
+    .stat { text-align: center; }
+    .stat-num { font-family: var(--font-h); font-size: 2rem; font-weight: 700; color: var(--text); line-height: 1; }
+    .stat-label { font-size: 0.75rem; color: var(--text-sub); margin-top: 0.3rem; }
+    .hero-btns { display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.7rem 1.6rem; border-radius: 8px; font-family: var(--font-h); font-size: 0.82rem; font-weight: 600; text-decoration: none; cursor: pointer; border: none; transition: all 0.18s; letter-spacing: 0.02em; }
+    .btn-primary { background: var(--accent); color: #1a0a3a; }
+    .btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); }
+    .btn-ghost { background: transparent; border: 1px solid var(--border-hi); color: var(--text-sub); }
+    .btn-ghost:hover { border-color: var(--text-sub); color: var(--text); }
+    #about { background: var(--bg2); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-photo-wrap { display: flex; flex-direction: column; gap: 1rem; max-width: 280px; margin: 0 auto; width: 100%; }
+    .photo-box { width: 100%; aspect-ratio: 3/4; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; background: var(--bg3); position: relative; transition: border-color 0.2s; }
+    .photo-box:hover { border-color: var(--accent); }
+    .photo-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    #photo-input { display: none; }
+    .about-content { padding-top: 0.5rem; }
+    .about-content p { color: var(--text-sub); font-size: 0.93rem; font-weight: 300; margin-bottom: 1rem; line-height: 1.8; }
+    .about-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 2rem; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .about-info-cell { padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .about-info-cell:nth-child(2n) { border-right: none; }
+    .about-info-cell:nth-last-child(-n+2) { border-bottom: none; }
+    .cell-key { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.2rem; }
+    .cell-val { font-family: var(--font-h); font-size: 0.875rem; font-weight: 500; color: var(--text); }
+    #projects { background: var(--bg2); }
+    .projects-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .project-row { background: var(--bg); padding: 1.6rem 2rem; display: grid; grid-template-columns: 80px 1fr auto; gap: 1.5rem; align-items: start; transition: background 0.18s; }
+    .project-row:hover { background: var(--bg3); }
+    .proj-num { font-family: var(--font-h); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); padding-top: 0.2rem; }
+    .proj-title { font-family: var(--font-h); font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+    .proj-cat { font-size: 0.75rem; color: var(--text-dim); margin-bottom: 0.6rem; font-weight: 400; }
+    .proj-desc { font-size: 0.845rem; color: var(--text-sub); font-weight: 300; line-height: 1.65; }
+    .proj-actions { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end; padding-top: 0.1rem; min-width: 160px; }
+    .pdf-view-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.1rem; background: transparent; border: 1px solid rgba(129,161,193,0.35); border-radius: 6px; color: var(--accent); font-size: 0.78rem; font-family: var(--font-h); font-weight: 500; cursor: pointer; transition: all 0.2s; white-space: nowrap; text-decoration: none; }
+    .pdf-view-btn:hover { background: var(--accent-lo); border-color: var(--accent); box-shadow: 0 0 12px rgba(129,161,193,0.18); transform: translateY(-1px); }
+    .pdf-view-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
+
+    #summary { background: var(--bg2); }
+    .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .summary-card { background: var(--bg); padding: 2rem; }
+    .summary-card h3 { font-family: var(--font-h); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-sub); margin-bottom: 1rem; }
+    .textarea-field { width: 100%; min-height: 100px; background: rgba(14, 14, 26, 0.4); border: 1px solid var(--border); border-radius: 6px; padding: 0.75rem; font-size: 0.845rem; color: var(--text-sub); font-family: var(--font-b); font-weight: 300; resize: vertical; outline: none; line-height: 1.65; transition: border-color 0.2s; }
+    .textarea-field::placeholder { color: var(--text-dim); }
+    .textarea-field:focus { border-color: var(--text-sub); }
+    .save-btn { margin-top: 0.6rem; padding: 0.4rem 1rem; background: transparent; border: 1px solid var(--border-hi); color: var(--text-sub); border-radius: 5px; font-size: 0.75rem; font-family: var(--font-h); font-weight: 500; cursor: pointer; transition: all 0.18s; }
+    .save-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .skills-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2.5rem; }
+    .skill-tag { background: var(--bg3); border: 1px solid var(--border); color: var(--text-sub); padding: 0.3rem 0.9rem; border-radius: 100px; font-size: 0.775rem; font-weight: 400; }
+    #contact { background: rgba(8, 8, 16, 0.95); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .contact-left h2 { font-family: var(--font-h); font-size: clamp(2rem,4vw,3.2rem); font-weight: 700; line-height: 1.15; color: var(--text); margin-bottom: 1rem; }
+    .contact-left h2 em { font-style: normal; color: var(--accent); }
+    .contact-left p { font-size: 0.9rem; color: var(--text-sub); font-weight: 300; margin-bottom: 2rem; max-width: 380px; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .contact-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 1.1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; text-decoration: none; transition: all 0.18s; }
+    .contact-link:hover { border-color: var(--border-hi); background: var(--bg3); }
+    .contact-link-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--accent-lo); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-link-icon svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 1.8; }
+    .contact-link-label { font-size: 0.68rem; color: var(--text-dim); font-weight: 400; text-transform: uppercase; letter-spacing: 0.1em; }
+    .contact-link-val { font-family: var(--font-h); font-size: 0.875rem; font-weight: 500; color: var(--text); }
+    .contact-form { display: flex; flex-direction: column; gap: 0.75rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-label { font-size: 0.7rem; font-weight: 600; color: #f1f5f9; letter-spacing: 0.1em; text-transform: uppercase; }
+    .form-input { background: var(--bg2); border: 1px solid var(--border); border-radius: 7px; padding: 0.65rem 0.9rem; font-size: 0.875rem; color: var(--text); outline: none; font-family: var(--font-b); transition: border-color 0.2s; }
+    .form-input::placeholder { color: #cbd5e1; }
+    .form-input:focus { border-color: var(--text-sub); }
+    textarea.form-input { min-height: 100px; resize: vertical; }
+    .form-submit { padding: 0.72rem 1.5rem; background: var(--accent); color: #1a0a3a; border: none; border-radius: 7px; font-family: var(--font-h); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.18s; align-self: flex-start; }
+    .form-submit:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    footer { background: rgba(16, 11, 30, 0.9); border-top: 1px solid var(--border); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; }
+    .foot-logo { font-family: var(--font-h); font-size: 0.85rem; font-weight: 600; color: var(--text-sub); }
+    .foot-right { font-size: 0.75rem; color: var(--text-dim); }
+    #toast { position: fixed; bottom: 1.75rem; right: 1.75rem; background: var(--bg3); border: 1px solid var(--border-hi); color: var(--text-sub); padding: 0.65rem 1.1rem; border-radius: 8px; font-size: 0.8rem; font-family: var(--font-h); z-index: 9999; opacity: 0; transform: translateY(6px); transition: all 0.25s; pointer-events: none; }
+    #toast.show { opacity: 1; transform: translateY(0); }
+    [contenteditable="true"] { outline: none; border-radius: 3px; }
+    [contenteditable="true"]:focus { background: rgba(255,255,255,0.03); }
+    @media (max-width: 768px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-photo-wrap { max-width: 280px; margin: 0 auto; }
+      .summary-grid { grid-template-columns: 1fr; }
+      .project-row { grid-template-columns: 1fr; }
+      .proj-actions { align-items: flex-start; }
+      .nav-links { display: none; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">Le Nguyen Chuong<span>.</span>Portfolio</a>
+  <ul class="nav-links">
+    <li><a href="#about">Giới thiệu</a></li>
+    <li><a href="#projects">Dự án</a></li>
+    <li><a href="#summary">Tổng kết</a></li>
+    <li><a href="#contact">Liên hệ</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner fade-in">
+      <div class="hero-badge">Portfolio Kỹ Thuật Số · 2025–2026</div>
+      <h1 class="hero-title">
+        Nhập môn Công nghệ số<br>& <em>Ứng dụng Trí tuệ nhân tạo</em>
+      </h1>
+      <p class="hero-sub">
+        Chào mừng đến với Portfolio cá nhân của <strong>Le Nguyen Chuong</strong>. Đây là nơi tổng hợp toàn bộ bài tập, sản phẩm thực hành và trải nghiệm học tập trong môn học này.
+      </p>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">6</div><div class="stat-label">Bài tập hoàn thành</div></div>
+        <div class="stat"><div class="stat-num">3</div><div class="stat-label">Kỹ năng nhóm</div></div>
+        <div class="stat"><div class="stat-num">1</div><div class="stat-label">Portfolio hoàn chỉnh</div></div>
+      </div>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">Xem bài tập</a>
+        <a href="#contact" class="btn btn-ghost">Liên hệ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section-wrap">
+  <div class="container">
+    <div class="eyebrow fade-in">Giới thiệu</div>
+    <h2 class="section-title fade-in">About me</h2>
+    <div class="about-grid">
+      <div class="about-photo-wrap fade-in">
+        <div class="photo-box">
+          <img src="anh1.jfif" alt="Ảnh cá nhân" />
+        </div>
+      </div>
+      <div class="about-content fade-in" style="transition-delay:0.1s">
+        <p>Xin chào! Tôi là <strong>Lê Nguyên Chương</strong>, sinh viên năm nhất ngành Công Nghệ Thông Tin tại Trường Đại học Công Nghệ — Đại học Quốc Gia Hà Nội. Tôi có niềm đam mê với công nghệ và luôn khát kháo khám phá những điều mới mẻ trong thế giới số.</p>
+        <p>Trong năm học 2025–2026, tôi đã tiếp cận và ứng dụng nhiều công cụ AI hiện đại vào việc học tập, từ viết Prompt hiệu quả, khai thác dữ liệu học thuật, đến sáng tạo nội dung số. Tôi tin rằng AI không thay thế con người — mà giúp con người làm việc thông minh hơn.</p>
+        <p>Mục tiêu của tôi là xây dựng nền tảng kỹ năng số vững chắc, phát triển tư duy phân tích và hướng tới việc tạo ra những sản phẩm công nghệ có ý nghĩa cho cộng đồng.</p>
+        <div class="about-info-grid">
+          <div class="about-info-cell"><div class="cell-key">Họ và tên</div><div class="cell-val">Lê Nguyên Chương</div></div>
+          <div class="about-info-cell"><div class="cell-key">Năm học</div><div class="cell-val">Năm 1 · 2025–2026</div></div>
+          <div class="about-info-cell"><div class="cell-key">Trường</div><div class="cell-val">Trường Đại học Công Nghệ - Đại học Quốc Gia Hà Nội</div></div>
+          <div class="about-info-cell"><div class="cell-key">Ngành học</div><div class="cell-val">CN1 - Công Nghệ Thông Tin</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section-wrap">
+  <div class="container">
+    <div class="eyebrow fade-in">Bài tập thực hành</div>
+    <h2 class="section-title fade-in">Skills</h2>
+    <div class="projects-list fade-in">
+      <div class="project-row">
+        <div class="proj-num">Bài 01<br>Mục 1.4</div>
+        <div class="proj-body">
+          <div class="proj-title">Thao tác cơ bản với tệp tin và thư mục</div>
+          <div class="proj-cat">Quản lý tệp & thư mục</div>
+          <div class="proj-desc" contenteditable="true">Trình bày cấu trúc thư mục tối ưu và quy tắc đặt tên tệp đã thiết lập, kèm ảnh chụp minh họa.</div>
+        </div>
+        <div class="proj-actions">
+          <a class="pdf-view-btn" href="baitap1-1.4.pdf" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Xem PDF
+          </a>
+        </div>
+      </div>
+      <div class="project-row">
+        <div class="proj-num">Bài 02<br>Mục 2.4</div>
+        <div class="proj-body">
+          <div class="proj-title">Tìm kiếm và đánh giá thông tin học thuật</div>
+          <div class="proj-cat">Khai thác dữ liệu & thông tin</div>
+          <div class="proj-desc" contenteditable="true">Trình bày kết quả tìm kiếm học thuật bằng các toán tử nâng cao và bảng đánh giá nguồn tin đã thực hiện.</div>
+        </div>
+        <div class="proj-actions">
+          <a class="pdf-view-btn" href="baitap2-2.4.pdf" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Xem PDF
+          </a>
+        </div>
+      </div>
+      <div class="project-row">
+        <div class="proj-num">Bài 03<br>Mục 3.4</div>
+        <div class="proj-body">
+          <div class="proj-title">Viết Prompt hiệu quả cho các tác vụ học tập</div>
+          <div class="proj-cat">Tổng quan về trí tuệ nhân tạo</div>
+          <div class="proj-desc" contenteditable="true">Trình bày sự so sánh giữa Prompt ban đầu và Prompt cải tiến cùng kết quả đầu ra từ AI.</div>
+        </div>
+        <div class="proj-actions">
+          <a class="pdf-view-btn" href="bai2-3.4.pdf" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Xem PDF
+          </a>
+        </div>
+      </div>
+      <div class="project-row">
+        <div class="proj-num">Bài 04<br>Mục 4.4</div>
+        <div class="proj-body">
+          <div class="proj-title">Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</div>
+          <div class="proj-cat">Giao tiếp & hợp tác môi trường số</div>
+          <div class="proj-desc" contenteditable="true">Trình bày minh chứng về việc sử dụng công cụ quản lý dự án nhóm và cách thức phối hợp trực tuyến.</div>
+        </div>
+        <div class="proj-actions">
+          <a class="pdf-view-btn" href="bai3-4.4.pdf" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Xem PDF
+          </a>
+        </div>
+      </div>
+      <div class="project-row">
+        <div class="proj-num">Bài 05<br>Mục 5.4</div>
+        <div class="proj-body">
+          <div class="proj-title">Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</div>
+          <div class="proj-cat">Sáng tạo nội dung số</div>
+          <div class="proj-desc" contenteditable="true">Trưng bày sản phẩm nội dung số hoàn thiện (hình ảnh, video hoặc bài viết) được hỗ trợ bởi AI.</div>
+        </div>
+        <div class="proj-actions">
+          <a class="pdf-view-btn" href="bai2-5.4.pdf" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Xem PDF
+          </a>
+        </div>
+      </div>
+      <div class="project-row">
+        <div class="proj-num">Bài 06<br>Mục 6.4</div>
+        <div class="proj-body">
+          <div class="proj-title">Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</div>
+          <div class="proj-cat">An toàn & liêm chính học thuật</div>
+          <div class="proj-desc" contenteditable="true">Trình bày bộ nguyên tắc cá nhân về sử dụng AI có trách nhiệm dựa trên các nghiên cứu đã thực hiện.</div>
+        </div>
+        <div class="proj-actions">
+          <a class="pdf-view-btn" href="bai4-6.4.pdf" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Xem PDF
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="summary" class="section-wrap">
+  <div class="container">
+    <div class="eyebrow fade-in">Tổng kết</div>
+    <h2 class="section-title fade-in">Experience</h2>
+    <div class="summary-grid fade-in">
+      <div class="summary-card">
+        <h3>Trải nghiệm & cảm nhận cá nhân</h3>
+        <p style="color: var(--text); font-size: 0.9rem; font-weight: 300; line-height: 1.65;">Quá trình thực hiện Portfolio và môn học giúp tôi làm quen với nhiều công cụ AI tiên tiến, mở rộng tư duy công nghệ và cải thiện hiệu suất học tập một cách rõ rệt.</p>
+      </div>
+      <div class="summary-card">
+        <h3>Kiến thức & kỹ năng quan trọng nhất</h3>
+        <p style="color: var(--text); font-size: 0.9rem; font-weight: 300; line-height: 1.65;">Tôi đã nắm vững kỹ năng viết Prompt hiệu quả (Prompt Engineering), cách tìm kiếm thông tin học thuật chuẩn xác, cũng như khả năng sáng tạo nội dung số với sự hỗ trợ của AI.</p>
+      </div>
+      <div class="summary-card">
+        <h3>Điểm tâm đắc nhất</h3>
+        <p style="color: var(--text); font-size: 0.9rem; font-weight: 300; line-height: 1.65;">Tôi đặc biệt ấn tượng với cách AI có thể hỗ trợ tổng hợp thông tin phức tạp và tạo ra các ý tưởng sáng tạo trong thời gian ngắn, giúp tiết kiệm thời gian nghiên cứu.</p>
+      </div>
+      <div class="summary-card">
+        <h3>Thách thức & bài học kinh nghiệm</h3>
+        <p style="color: var(--text); font-size: 0.9rem; font-weight: 300; line-height: 1.65;">Thách thức ban đầu là cách đặt câu hỏi (prompt) để AI hiểu đúng ý. Bài học tôi rút ra là cần giao tiếp với AI rõ ràng, cung cấp đủ ngữ cảnh và tinh chỉnh kết quả liên tục.</p>
+      </div>
+    </div>
+    <div class="skills-row fade-in">
+      <span class="skill-tag">Quản lý tệp & thư mục</span>
+      <span class="skill-tag">Tìm kiếm học thuật nâng cao</span>
+      <span class="skill-tag">Prompt Engineering</span>
+      <span class="skill-tag">Hợp tác trực tuyến</span>
+      <span class="skill-tag">Sáng tạo nội dung với AI</span>
+      <span class="skill-tag">Sử dụng AI có trách nhiệm</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section-wrap">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-left fade-in">
+        <div class="eyebrow" style="margin-bottom:1rem">Liên hệ</div>
+        <h2>Hãy cùng<br><em>hợp tác.</em></h2>
+        <p>Tôi luôn sẵn sàng với các cơ hội thực tập, dự án nhóm, hoặc đơn giản là trao đổi về công nghệ. Đừng ngại liên hệ!</p>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:25020057@vnu.edu.vn">
+            <div class="contact-link-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="contact-link-text"><div class="contact-link-label">Email</div><div class="contact-link-val">25020057@vnu.edu.vn</div></div>
+          </a>
+          <a class="contact-link" href="https://github.com/lenguyenchuong544-dotcom" target="_blank">
+            <div class="contact-link-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
+            <div class="contact-link-text"><div class="contact-link-label">GitHub</div><div class="contact-link-val">github.com/lenguyenchuong544-dotcom</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form fade-in" style="transition-delay:0.1s">
+        <div class="form-group"><label class="form-label">Họ tên</label><input id="f-name" type="text" class="form-input" placeholder="Nguyễn Văn A" /></div>
+        <div class="form-group"><label class="form-label">Email</label><input id="f-email" type="email" class="form-input" placeholder="email@example.com" /></div>
+        <div class="form-group"><label class="form-label">Tiêu đề</label><input id="f-subject" type="text" class="form-input" placeholder="Chào Le Nguyen Chuong..." /></div>
+        <div class="form-group"><label class="form-label">Tin nhắn</label><textarea id="f-message" class="form-input" placeholder="Nội dung tin nhắn..."></textarea></div>
+        <button class="form-submit" onclick="sendMail()">Gửi tin nhắn</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">Le Nguyen Chuong &middot; Portfolio</div>
+  <div class="foot-right">Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo · 2025</div>
+</footer>
+
+<div id="toast">Đã lưu</div>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  const secs = document.querySelectorAll('section[id]');
+  const navAs = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 90) cur = s.id; });
+    navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+  });
+
+  function loadPhoto(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    const img = document.getElementById('profile-img');
+    img.src = url; img.style.display = 'block';
+    document.getElementById('photo-placeholder').style.display = 'none';
+    showToast('Ảnh đã được tải lên');
+  }
+
+  function handleFile(input, n) {
+    const file = input.files[0];
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    const nm = document.getElementById('name' + n);
+    nm.textContent = file.name.length > 22 ? file.name.slice(0,20)+'…' : file.name;
+    nm.style.color = 'var(--accent)';
+    showToast('Đã đính kèm: ' + file.name);
+    const row = document.querySelectorAll('.link-row')[n-1];
+    let vb = document.getElementById('vb'+n);
+    if (!vb) {
+      vb = document.createElement('a'); vb.id='vb'+n;
+      vb.className='open-btn'; vb.target='_blank'; vb.textContent='Xem';
+      row.appendChild(vb);
+    }
+    vb.href = url;
+  }
+
+  function openLink(n) {
+    const url = document.getElementById('link'+n)?.value;
+    if (url && url.startsWith('http')) window.open(url,'_blank');
+    else showToast('Nhập đường link hợp lệ trước');
+  }
+
+  function openGithub() {
+    const url = document.getElementById('github-url')?.value;
+    if (url && url.startsWith('http')) window.open(url,'_blank');
+    else showToast('Nhập link GitHub hợp lệ trước');
+  }
+
+  function saveText(id) {
+    const val = document.getElementById(id)?.value;
+    try { localStorage.setItem('pf_'+id, val); } catch(e) {}
+    showToast('Đã lưu');
+  }
+  ['experience','skills','highlight','challenges'].forEach(id => {
+    try { const s = localStorage.getItem('pf_'+id); if (s) document.getElementById(id).value = s; } catch(e) {}
+  });
+
+  function sendMail() {
+    const name    = document.getElementById('f-name').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const subject = document.getElementById('f-subject').value.trim();
+    const message = document.getElementById('f-message').value.trim();
+    if (!name || !message) { showToast('Vui lòng điền họ tên và nội dung!'); return; }
+    const to  = '25020057@vnu.edu.vn';
+    const sub = encodeURIComponent(subject || 'Liên hệ từ Portfolio');
+    const body = encodeURIComponent(
+      'Họ tên: ' + name + '\n' +
+      'Email phản hồi: ' + (email || '(không cung cấp)') + '\n\n' +
+      message
+    );
+    const gmailUrl = 'https://mail.google.com/mail/?view=cm&to=' + to + '&su=' + sub + '&body=' + body;
+    window.open(gmailUrl, '_blank');
+    showToast('Đang mở Gmail...');
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2600);
+  }
+</script>
+</body>
+</html>

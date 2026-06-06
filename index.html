@@ -6,7 +6,7 @@
   <title>Portfolio — Le Nguyen Chuong</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg:        #080810;
@@ -21,7 +21,8 @@
       --accent:     #81a1c1;
       --accent-lo:  rgba(129,161,193,0.10);
       --accent2:    #6ee7b7;
-      --font-h:     'Inter', sans-serif;
+      --font-h:     'Lora', serif;
+      --font-mono:  'JetBrains Mono', monospace;
       --font-b:     'Inter', sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,6 +35,10 @@
       font-size: 15px;
       line-height: 1.75;
       overflow-x: hidden;
+    }
+    body::after {
+      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
     section, nav, footer { position: relative; z-index: 1; }
     section { border-top: 1px solid var(--border); }
@@ -50,56 +55,56 @@
     .nav-logo { font-family: var(--font-h); font-size: 1rem; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: 0.01em; }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a { font-size: 0.78rem; font-weight: 400; color: var(--text-sub); text-decoration: none; letter-spacing: 0.07em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 500; color: var(--text-sub); text-decoration: none; letter-spacing: 0.07em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--text); }
     .container { max-width: 1060px; margin: 0 auto; padding: 0 2rem; }
     .section-wrap { padding: 6rem 0; }
-    .eyebrow { font-family: var(--font-h); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.75rem; }
+    .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.75rem; }
     .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
-    .section-title { font-family: var(--font-h); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 700; color: var(--text); line-height: 1.18; margin-bottom: 2.5rem; }
+    .section-title { font-family: var(--font-h); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 700; color: var(--text); line-height: 1.18; margin-bottom: 2.5rem; letter-spacing: -0.01em; }
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
     #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: 62px; text-align: center; }
     .hero-inner { max-width: 780px; padding: 5rem 0; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-lo); border: 1px solid rgba(167,139,250,0.22); color: var(--accent); border-radius: 100px; padding: 0.3rem 1rem; font-size: 0.75rem; font-family: var(--font-h); font-weight: 500; letter-spacing: 0.06em; margin-bottom: 2rem; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-lo); border: 1px solid rgba(129,161,193,0.22); color: var(--accent); border-radius: 100px; padding: 0.35rem 1.1rem; font-size: 0.75rem; font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.06em; margin-bottom: 2rem; }
     .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-    .hero-title { font-family: var(--font-h); font-size: clamp(3rem, 6vw, 5.2rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.025em; color: var(--text); margin-bottom: 1.5rem; }
-    .hero-title em { font-style: normal; color: var(--accent); }
-    .hero-sub { font-size: 1rem; color: var(--text-sub); font-weight: 300; max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.8; }
+    .hero-title { font-family: var(--font-h); font-size: clamp(3rem, 6vw, 4.8rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--text); margin-bottom: 1.5rem; }
+    .hero-title em { font-style: italic; color: var(--accent); font-weight: 500; }
+    .hero-sub { font-size: 1.05rem; color: var(--text-sub); font-weight: 300; max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.8; }
     .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem; }
     .stat { text-align: center; }
-    .stat-num { font-family: var(--font-h); font-size: 2rem; font-weight: 700; color: var(--text); line-height: 1; }
-    .stat-label { font-size: 0.75rem; color: var(--text-sub); margin-top: 0.3rem; }
+    .stat-num { font-family: var(--font-mono); font-size: 2rem; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 0.5rem; }
+    .stat-label { font-size: 0.8rem; color: var(--text-sub); }
     .hero-btns { display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.7rem 1.6rem; border-radius: 8px; font-family: var(--font-h); font-size: 0.82rem; font-weight: 600; text-decoration: none; cursor: pointer; border: none; transition: all 0.18s; letter-spacing: 0.02em; }
-    .btn-primary { background: var(--accent); color: #1a0a3a; }
-    .btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.8rem 1.8rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 600; text-decoration: none; cursor: pointer; border: none; transition: all 0.25s; letter-spacing: 0.02em; }
+    .btn-primary { background: var(--accent); color: #1a0a3a; box-shadow: 0 8px 24px rgba(129,161,193,0.25); }
+    .btn-primary:hover { filter: brightness(1.1); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(129,161,193,0.4); }
     .btn-ghost { background: transparent; border: 1px solid var(--border-hi); color: var(--text-sub); }
-    .btn-ghost:hover { border-color: var(--text-sub); color: var(--text); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
     #about { background: var(--bg2); }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     .about-photo-wrap { display: flex; flex-direction: column; gap: 1rem; max-width: 280px; margin: 0 auto; width: 100%; }
-    .photo-box { width: 100%; aspect-ratio: 3/4; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; background: var(--bg3); position: relative; transition: border-color 0.2s; }
-    .photo-box:hover { border-color: var(--accent); }
+    .photo-box { width: 100%; aspect-ratio: 3/4; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; background: var(--bg3); position: relative; transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .photo-box:hover { border-color: var(--accent); box-shadow: 0 10px 40px rgba(129,161,193,0.25); transform: translateY(-3px); }
     .photo-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
     #photo-input { display: none; }
     .about-content { padding-top: 0.5rem; }
-    .about-content p { color: var(--text-sub); font-size: 0.93rem; font-weight: 300; margin-bottom: 1rem; line-height: 1.8; }
-    .about-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 2rem; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-    .about-info-cell { padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .about-content p { color: var(--text-sub); font-size: 0.95rem; font-weight: 300; margin-bottom: 1.2rem; line-height: 1.8; }
+    .about-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 2.5rem; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .about-info-cell { padding: 1.1rem 1.2rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
     .about-info-cell:nth-child(2n) { border-right: none; }
     .about-info-cell:nth-last-child(-n+2) { border-bottom: none; }
-    .cell-key { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.2rem; }
-    .cell-val { font-family: var(--font-h); font-size: 0.875rem; font-weight: 500; color: var(--text); }
-    #projects { background: var(--bg2); }
+    .cell-key { font-family: var(--font-mono); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+    .cell-val { font-family: var(--font-b); font-size: 0.95rem; font-weight: 500; color: var(--text); }
+    #projects { background: transparent; }
     .projects-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
-    .project-row { background: var(--bg); padding: 1.6rem 2rem; display: grid; grid-template-columns: 80px 1fr auto; gap: 1.5rem; align-items: start; transition: background 0.18s; }
-    .project-row:hover { background: var(--bg3); }
-    .proj-num { font-family: var(--font-h); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); padding-top: 0.2rem; }
-    .proj-title { font-family: var(--font-h); font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
-    .proj-cat { font-size: 0.75rem; color: var(--text-dim); margin-bottom: 0.6rem; font-weight: 400; }
+    .project-row { background: var(--bg2); padding: 2rem 2.5rem; display: grid; grid-template-columns: 90px 1fr auto; gap: 2rem; align-items: start; transition: background 0.25s; }
+    .project-row:hover { background: rgba(20, 20, 34, 0.9); }
+    .proj-num { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); padding-top: 0.2rem; }
+    .proj-title { font-family: var(--font-h); font-size: 1.25rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; letter-spacing: -0.01em; }
+    .proj-cat { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); margin-bottom: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
     .proj-desc { font-size: 0.845rem; color: var(--text-sub); font-weight: 300; line-height: 1.65; }
-    .proj-actions { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end; padding-top: 0.1rem; min-width: 160px; }
+    .proj-actions { display: flex; flex-direction: row; flex-wrap: wrap; gap: 0.5rem; align-items: flex-start; justify-content: flex-end; padding-top: 0.1rem; min-width: 220px; }
     .pdf-view-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.1rem; background: transparent; border: 1px solid rgba(129,161,193,0.35); border-radius: 6px; color: var(--accent); font-size: 0.78rem; font-family: var(--font-h); font-weight: 500; cursor: pointer; transition: all 0.2s; white-space: nowrap; text-decoration: none; }
     .pdf-view-btn:hover { background: var(--accent-lo); border-color: var(--accent); box-shadow: 0 0 12px rgba(129,161,193,0.18); transform: translateY(-1px); }
     .pdf-view-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
@@ -113,29 +118,41 @@
     .textarea-field:focus { border-color: var(--text-sub); }
     .save-btn { margin-top: 0.6rem; padding: 0.4rem 1rem; background: transparent; border: 1px solid var(--border-hi); color: var(--text-sub); border-radius: 5px; font-size: 0.75rem; font-family: var(--font-h); font-weight: 500; cursor: pointer; transition: all 0.18s; }
     .save-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .skills-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2.5rem; }
-    .skill-tag { background: var(--bg3); border: 1px solid var(--border); color: var(--text-sub); padding: 0.3rem 0.9rem; border-radius: 100px; font-size: 0.775rem; font-weight: 400; }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
+    .skill-item { background: rgba(14, 14, 26, 0.4); border: 1px solid var(--border); padding: 1.5rem; border-radius: 12px; transition: all 0.3s; }
+    .skill-item:hover { border-color: var(--accent); transform: translateY(-3px); background: var(--bg3); box-shadow: 0 10px 30px rgba(129,161,193,0.1); }
+    .skill-item-title { font-family: var(--font-h); font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+    .skill-item-desc { font-size: 0.88rem; color: var(--text-sub); line-height: 1.6; font-weight: 300; }
     #contact { background: rgba(8, 8, 16, 0.95); }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-    .contact-left h2 { font-family: var(--font-h); font-size: clamp(2rem,4vw,3.2rem); font-weight: 700; line-height: 1.15; color: var(--text); margin-bottom: 1rem; }
-    .contact-left h2 em { font-style: normal; color: var(--accent); }
-    .contact-left p { font-size: 0.9rem; color: var(--text-sub); font-weight: 300; margin-bottom: 2rem; max-width: 380px; }
+    .contact-left h2 { font-family: var(--font-h); font-size: clamp(2rem,4vw,3.6rem); font-weight: 700; line-height: 1.15; color: var(--text); margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .contact-left h2 em { font-style: italic; color: var(--accent); font-weight: 500; }
+    .contact-left p { font-size: 0.95rem; color: var(--text-sub); font-weight: 300; margin-bottom: 2rem; max-width: 380px; }
     .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
-    .contact-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 1.1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; text-decoration: none; transition: all 0.18s; }
-    .contact-link:hover { border-color: var(--border-hi); background: var(--bg3); }
+    .contact-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 1.1rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; text-decoration: none; transition: all 0.25s; }
+    .contact-link:hover { border-color: var(--accent); background: var(--bg3); transform: translateX(4px); box-shadow: 0 4px 15px rgba(129,161,193,0.15); }
     .contact-link-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--accent-lo); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .contact-link-icon svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 1.8; }
-    .contact-link-label { font-size: 0.68rem; color: var(--text-dim); font-weight: 400; text-transform: uppercase; letter-spacing: 0.1em; }
-    .contact-link-val { font-family: var(--font-h); font-size: 0.875rem; font-weight: 500; color: var(--text); }
-    .contact-form { display: flex; flex-direction: column; gap: 0.75rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
-    .form-label { font-size: 0.7rem; font-weight: 600; color: #f1f5f9; letter-spacing: 0.1em; text-transform: uppercase; }
+    .contact-link-label { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-sub); font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.1rem; }
+    .contact-link-val { font-family: var(--font-b); font-size: 0.9rem; font-weight: 500; color: var(--text); }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-label { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
     .form-input { background: var(--bg2); border: 1px solid var(--border); border-radius: 7px; padding: 0.65rem 0.9rem; font-size: 0.875rem; color: var(--text); outline: none; font-family: var(--font-b); transition: border-color 0.2s; }
     .form-input::placeholder { color: #cbd5e1; }
     .form-input:focus { border-color: var(--text-sub); }
     textarea.form-input { min-height: 100px; resize: vertical; }
     .form-submit { padding: 0.72rem 1.5rem; background: var(--accent); color: #1a0a3a; border: none; border-radius: 7px; font-family: var(--font-h); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.18s; align-self: flex-start; }
     .form-submit:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    #pdf-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    #pdf-modal.show { opacity: 1; pointer-events: auto; }
+    .modal-content { width: 90%; max-width: 1100px; height: 88vh; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; position: relative; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .modal-header { padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: var(--bg3); }
+    .modal-title { font-family: var(--font-h); font-weight: 600; font-size: 1rem; color: var(--text); }
+    .close-modal { background: transparent; border: none; color: var(--text-sub); font-size: 1.8rem; cursor: pointer; transition: color 0.2s; line-height: 1; }
+    .close-modal:hover { color: var(--accent); }
+    .modal-body { flex: 1; width: 100%; height: 100%; background: #fff; }
+    .modal-body iframe { width: 100%; height: 100%; border: none; }
     footer { background: rgba(16, 11, 30, 0.9); border-top: 1px solid var(--border); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; }
     .foot-logo { font-family: var(--font-h); font-size: 0.85rem; font-weight: 600; color: var(--text-sub); }
     .foot-right { font-size: 0.75rem; color: var(--text-dim); }
@@ -146,7 +163,7 @@
     @media (max-width: 768px) {
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
       .about-photo-wrap { max-width: 280px; margin: 0 auto; }
-      .summary-grid { grid-template-columns: 1fr; }
+      .summary-grid, .skills-grid { grid-template-columns: 1fr; }
       .project-row { grid-template-columns: 1fr; }
       .proj-actions { align-items: flex-start; }
       .nav-links { display: none; }
@@ -249,12 +266,16 @@
         <div class="proj-body">
           <div class="proj-title">Thao tác cơ bản với tệp tin và thư mục</div>
           <div class="proj-cat">Quản lý tệp & thư mục</div>
-          <div class="proj-desc" contenteditable="true">Trình bày cấu trúc thư mục tối ưu và quy tắc đặt tên tệp đã thiết lập, kèm ảnh chụp minh họa.</div>
+          <div class="proj-desc">Trình bày cấu trúc thư mục tối ưu và quy tắc đặt tên tệp đã thiết lập. Báo cáo ghi lại chi tiết từng bước thao tác: tạo thư mục "ThucHanh_LeNguyenChuong", phân nhánh thư mục "TaiLieu", cùng các kỹ năng quản lý tệp cơ bản (tạo, đổi tên, sao chép, cắt, dán và khôi phục từ Recycle Bin) kèm ảnh chụp màn hình trực quan.</div>
         </div>
         <div class="proj-actions">
+          <button class="pdf-view-btn" onclick="openPdfModal('baitap1-1.4.pdf', 'Thao tác cơ bản với tệp tin và thư mục')">
+            <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Xem ngay
+          </button>
           <a class="pdf-view-btn" href="baitap1-1.4.pdf" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            Xem PDF
+            Mở file
           </a>
         </div>
       </div>
@@ -263,12 +284,16 @@
         <div class="proj-body">
           <div class="proj-title">Tìm kiếm và đánh giá thông tin học thuật</div>
           <div class="proj-cat">Khai thác dữ liệu & thông tin</div>
-          <div class="proj-desc" contenteditable="true">Trình bày kết quả tìm kiếm học thuật bằng các toán tử nâng cao và bảng đánh giá nguồn tin đã thực hiện.</div>
+          <div class="proj-desc">Trình bày kết quả tìm kiếm học thuật bằng các toán tử nâng cao và bảng đánh giá nguồn tin đã thực hiện. Bài tập xoay quanh chủ đề "Ứng dụng AI trong tự động hóa kiểm thử", đi kèm bảng phân tích độ tin cậy của 10 nguồn tài liệu uy tín từ IEEE, Springer, ACM và Google Scholar dựa trên tiêu chí khoa học.</div>
         </div>
         <div class="proj-actions">
+          <button class="pdf-view-btn" onclick="openPdfModal('baitap2-2.4.pdf', 'Tìm kiếm và đánh giá thông tin học thuật')">
+            <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Xem ngay
+          </button>
           <a class="pdf-view-btn" href="baitap2-2.4.pdf" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            Xem PDF
+            Mở file
           </a>
         </div>
       </div>
@@ -277,12 +302,16 @@
         <div class="proj-body">
           <div class="proj-title">Viết Prompt hiệu quả cho các tác vụ học tập</div>
           <div class="proj-cat">Tổng quan về trí tuệ nhân tạo</div>
-          <div class="proj-desc" contenteditable="true">Trình bày sự so sánh giữa Prompt ban đầu và Prompt cải tiến cùng kết quả đầu ra từ AI.</div>
+          <div class="proj-desc">Trình bày sự so sánh giữa Prompt ban đầu và Prompt cải tiến cùng kết quả đầu ra từ AI. Báo cáo phân tích hiệu quả của kỹ thuật Prompt Engineering (Role-playing, Few-shot, Chain-of-Thought) qua 3 tác vụ: tóm tắt bài báo, giải thích tính kế thừa trong Java và tạo câu hỏi trắc nghiệm định luật Newton.</div>
         </div>
         <div class="proj-actions">
+          <button class="pdf-view-btn" onclick="openPdfModal('bai2-3.4.pdf', 'Viết Prompt hiệu quả cho các tác vụ học tập')">
+            <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Xem ngay
+          </button>
           <a class="pdf-view-btn" href="bai2-3.4.pdf" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            Xem PDF
+            Mở file
           </a>
         </div>
       </div>
@@ -291,12 +320,16 @@
         <div class="proj-body">
           <div class="proj-title">Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</div>
           <div class="proj-cat">Giao tiếp & hợp tác môi trường số</div>
-          <div class="proj-desc" contenteditable="true">Trình bày minh chứng về việc sử dụng công cụ quản lý dự án nhóm và cách thức phối hợp trực tuyến.</div>
+          <div class="proj-desc">Trình bày minh chứng về việc sử dụng công cụ quản lý dự án nhóm và cách thức phối hợp trực tuyến. Báo cáo cá nhân nêu rõ vai trò của 3 nền tảng cốt lõi: Trello (quản lý tiến độ Kanban), Google Docs (soạn thảo cộng tác) và Discord (họp nhóm), đồng thời đưa ra các giải pháp khắc phục khó khăn.</div>
         </div>
         <div class="proj-actions">
+          <button class="pdf-view-btn" onclick="openPdfModal('bai3-4.4.pdf', 'Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm')">
+            <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Xem ngay
+          </button>
           <a class="pdf-view-btn" href="bai3-4.4.pdf" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            Xem PDF
+            Mở file
           </a>
         </div>
       </div>
@@ -305,12 +338,16 @@
         <div class="proj-body">
           <div class="proj-title">Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</div>
           <div class="proj-cat">Sáng tạo nội dung số</div>
-          <div class="proj-desc" contenteditable="true">Trưng bày sản phẩm nội dung số hoàn thiện (hình ảnh, video hoặc bài viết) được hỗ trợ bởi AI.</div>
+          <div class="proj-desc">Trưng bày sản phẩm nội dung số hoàn thiện được hỗ trợ bởi AI. Dự án kết hợp ChatGPT để lên ý tưởng và Canva AI để thiết kế hình ảnh. Sản phẩm cuối cùng là một Infographic 1 trang trực quan về chủ đề "Vai trò của AI tạo sinh trong học tập và sáng tạo nội dung số", bao gồm quy trình 5 bước thực hiện.</div>
         </div>
         <div class="proj-actions">
+          <button class="pdf-view-btn" onclick="openPdfModal('bai2-5.4.pdf', 'Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung')">
+            <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Xem ngay
+          </button>
           <a class="pdf-view-btn" href="bai2-5.4.pdf" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            Xem PDF
+            Mở file
           </a>
         </div>
       </div>
@@ -319,12 +356,16 @@
         <div class="proj-body">
           <div class="proj-title">Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</div>
           <div class="proj-cat">An toàn & liêm chính học thuật</div>
-          <div class="proj-desc" contenteditable="true">Trình bày bộ nguyên tắc cá nhân về sử dụng AI có trách nhiệm dựa trên các nghiên cứu đã thực hiện.</div>
+          <div class="proj-desc">Trình bày bộ nguyên tắc cá nhân về sử dụng AI có trách nhiệm dựa trên các nghiên cứu đã thực hiện. Báo cáo làm rõ ranh giới giữa việc dùng AI làm "trợ lý" và hành vi gian lận học thuật, đồng thời đề xuất 5 nguyên tắc vàng (Minh bạch, Trung thực, Kiểm chứng, Bảo vệ dữ liệu, Tư duy độc lập).</div>
         </div>
         <div class="proj-actions">
+          <button class="pdf-view-btn" onclick="openPdfModal('bai4-6.4.pdf', 'Sử dụng AI có trách nhiệm trong học tập')">
+            <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Xem ngay
+          </button>
           <a class="pdf-view-btn" href="bai4-6.4.pdf" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            Xem PDF
+            Mở file
           </a>
         </div>
       </div>
@@ -341,28 +382,46 @@
     <div class="summary-grid fade-in">
       <div class="summary-card">
         <h3>Trải nghiệm & cảm nhận cá nhân</h3>
-        <p style="color: var(--text); font-size: 0.9rem; font-weight: 300; line-height: 1.65;">Quá trình thực hiện Portfolio và môn học giúp tôi làm quen với nhiều công cụ AI tiên tiến, mở rộng tư duy công nghệ và cải thiện hiệu suất học tập một cách rõ rệt.</p>
+        <p style="color: var(--text); font-size: 0.9rem; font-weight: 300; line-height: 1.65;">Môn học cung cấp cơ hội thực hành tuyệt vời qua 6 bài tập. Từ việc tổ chức tệp tin khoa học (Bài 1) đến việc áp dụng Trello, Google Docs và Discord vào dự án nhóm (Bài 4), mọi trải nghiệm đều rất thực tế và mang tính ứng dụng cao cho công việc sau này.</p>
       </div>
       <div class="summary-card">
         <h3>Kiến thức & kỹ năng quan trọng nhất</h3>
-        <p style="color: var(--text); font-size: 0.9rem; font-weight: 300; line-height: 1.65;">Tôi đã nắm vững kỹ năng viết Prompt hiệu quả (Prompt Engineering), cách tìm kiếm thông tin học thuật chuẩn xác, cũng như khả năng sáng tạo nội dung số với sự hỗ trợ của AI.</p>
+        <p style="color: var(--text); font-size: 0.9rem; font-weight: 300; line-height: 1.65;">Kỹ năng quan trọng nhất tôi học được là Prompt Engineering qua việc so sánh và cải tiến Prompt (Bài 3). Cùng với đó là năng lực tìm kiếm bài báo học thuật chuẩn quốc tế (Bài 2) và tư duy thiết kế nội dung số, tiêu biểu là Infographic bằng AI (Bài 5).</p>
       </div>
       <div class="summary-card">
         <h3>Điểm tâm đắc nhất</h3>
-        <p style="color: var(--text); font-size: 0.9rem; font-weight: 300; line-height: 1.65;">Tôi đặc biệt ấn tượng với cách AI có thể hỗ trợ tổng hợp thông tin phức tạp và tạo ra các ý tưởng sáng tạo trong thời gian ngắn, giúp tiết kiệm thời gian nghiên cứu.</p>
+        <p style="color: var(--text); font-size: 0.9rem; font-weight: 300; line-height: 1.65;">Tôi ấn tượng nhất với bài học về ranh giới đạo đức khi dùng AI (Bài 6). Thay vì để AI làm thay mọi việc một cách thụ động, tôi học được cách dùng AI như một trợ lý đắc lực để lên ý tưởng mà vẫn giữ được tư duy phản biện cá nhân.</p>
       </div>
       <div class="summary-card">
         <h3>Thách thức & bài học kinh nghiệm</h3>
-        <p style="color: var(--text); font-size: 0.9rem; font-weight: 300; line-height: 1.65;">Thách thức ban đầu là cách đặt câu hỏi (prompt) để AI hiểu đúng ý. Bài học tôi rút ra là cần giao tiếp với AI rõ ràng, cung cấp đủ ngữ cảnh và tinh chỉnh kết quả liên tục.</p>
+        <p style="color: var(--text); font-size: 0.9rem; font-weight: 300; line-height: 1.65;">Thách thức lớn nhất là làm sao tránh tình trạng AI "bịa" thông tin (hallucination). Qua thực hành, tôi nhận ra việc cung cấp bối cảnh (context) theo công thức C.R.E.A.T.E và kiểm chứng chéo nguồn dữ liệu là chìa khóa để có kết quả chính xác.</p>
       </div>
     </div>
-    <div class="skills-row fade-in">
-      <span class="skill-tag">Quản lý tệp & thư mục</span>
-      <span class="skill-tag">Tìm kiếm học thuật nâng cao</span>
-      <span class="skill-tag">Prompt Engineering</span>
-      <span class="skill-tag">Hợp tác trực tuyến</span>
-      <span class="skill-tag">Sáng tạo nội dung với AI</span>
-      <span class="skill-tag">Sử dụng AI có trách nhiệm</span>
+    <div class="skills-grid fade-in">
+      <div class="skill-item">
+        <div class="skill-item-title">Prompt Engineering</div>
+        <div class="skill-item-desc">Kỹ năng viết và tối ưu hóa câu lệnh (C.R.E.A.T.E) để tương tác hiệu quả với các mô hình ngôn ngữ lớn (ChatGPT, Gemini).</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-item-title">Sáng tạo nội dung số với AI</div>
+        <div class="skill-item-desc">Ứng dụng AI tạo văn bản và hình ảnh để hỗ trợ thiết kế Infographic, bài thuyết trình một cách trực quan, sinh động.</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-item-title">Khai thác dữ liệu học thuật</div>
+        <div class="skill-item-desc">Sử dụng toán tử nâng cao (Boolean) để tra cứu, đánh giá và tổng hợp tài liệu từ các cơ sở dữ liệu quốc tế như IEEE, Google Scholar.</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-item-title">Làm việc nhóm & Hợp tác trực tuyến</div>
+        <div class="skill-item-desc">Sử dụng thành thạo Trello (Kanban), Google Docs và Discord để quản lý tiến độ và phối hợp làm việc nhóm từ xa.</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-item-title">Tư duy phản biện & Đạo đức AI</div>
+        <div class="skill-item-desc">Phát triển tư duy kiểm chứng chéo thông tin (cross-check), tránh lỗi "ảo giác" (hallucination) và tuân thủ liêm chính học thuật.</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-item-title">Tổ chức & Quản lý thông tin số</div>
+        <div class="skill-item-desc">Xây dựng quy tắc đặt tên và quản lý cấu trúc cây thư mục khoa học, tối ưu hóa quá trình lưu trữ và tìm kiếm dữ liệu cá nhân.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -400,6 +459,18 @@
   <div class="foot-logo">Le Nguyen Chuong &middot; Portfolio</div>
   <div class="foot-right">Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo · 2025</div>
 </footer>
+
+<div id="pdf-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title" id="pdf-title">Tài liệu PDF</div>
+      <button class="close-modal" onclick="closePdfModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <iframe id="pdf-frame" src=""></iframe>
+    </div>
+  </div>
+</div>
 
 <div id="toast">Đã lưu</div>
 
@@ -479,7 +550,7 @@
       'Email phản hồi: ' + (email || '(không cung cấp)') + '\n\n' +
       message
     );
-    const gmailUrl = 'https://mail.google.com/mail/?view=cm&to=' + to + '&su=' + sub + '&body=' + body;
+    const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + to + '&su=' + sub + '&body=' + body;
     window.open(gmailUrl, '_blank');
     showToast('Đang mở Gmail...');
   }
@@ -521,6 +592,17 @@
       },
       "retina_detect": true
     });
+  }
+
+  function openPdfModal(pdfUrl, title) {
+    document.getElementById('pdf-title').textContent = title || 'Tài liệu PDF';
+    document.getElementById('pdf-frame').src = pdfUrl;
+    document.getElementById('pdf-modal').classList.add('show');
+  }
+
+  function closePdfModal() {
+    document.getElementById('pdf-modal').classList.remove('show');
+    document.getElementById('pdf-frame').src = '';
   }
 </script>
 </body>
